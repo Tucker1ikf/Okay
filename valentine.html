@@ -2,46 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day!</title>
+    <title>Valentine's Day Interactive Page</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #ffcccb;
-            font-family: Arial, sans-serif;
+            background-color: pink;
+            text-align: center;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
+        .heart {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 65%, 0% 100%, 0% 35%);
             margin: 10px;
-            cursor: pointer;
         }
         #noButton {
-            position: absolute;
+            position: relative;
         }
     </style>
 </head>
 <body>
-    <h1>Do you love Valentine’s Day?</h1>
-    <button id="yesButton">Yes!</button>
-    <button id="noButton" onclick="moveNoButton()">No!</button>
-
+    <h1>Nadine, will you be my Valentine?</h1>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div id="noButton">
+        <button onclick="moveNoButton()">No</button>
+    </div>
+    <button onclick="showSuccessPage()">Yes</button>
     <script>
         function moveNoButton() {
-            const noButton = document.getElementById('noButton');
-            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-            noButton.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            const button = document.getElementById('noButton');
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            button.style.position = 'absolute';
+            button.style.left = x + 'px';
+            button.style.top = y + 'px';
         }
-
-        const yesButton = document.getElementById('yesButton');
-        yesButton.addEventListener('click', function() {
-            alert('Yay! Happy Valentine’s Day! 💖');
-        });
+        function showSuccessPage() {
+            document.body.innerHTML = '<h1>Good choice, I love you Nadine!</h1>';
+        }
     </script>
 </body>
 </html>
